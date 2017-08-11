@@ -14,8 +14,8 @@ ADD ./oracle12.2/linux/ .
 RUN unzip instantclient-basic-linux.x64-12.2.0.1.0.zip -d /opt/oracle \
   && unzip instantclient-sdk-linux.x64-12.2.0.1.0.zip -d /opt/oracle  \
   && mv /opt/oracle/instantclient_12_2 /opt/oracle/instantclient \
-  && ln -s /opt/oracle/instantclient/libclntsh.so.12.2 /opt/oracle/instantclient/libclntsh.so \
-  && ln -s /opt/oracle/instantclient/libocci.so.12.2 /opt/oracle/instantclient/libocci.so
+  && ln -s /opt/oracle/instantclient/libclntsh.so.12.1 /opt/oracle/instantclient/libclntsh.so \
+  && ln -s /opt/oracle/instantclient/libocci.so.12.1 /opt/oracle/instantclient/libocci.so
 
 ENV LD_LIBRARY_PATH="/opt/oracle/instantclient"
 ENV OCI_HOME="/opt/oracle/instantclient"
