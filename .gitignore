@@ -1,1 +1,2 @@
-oracle12.2
+instantclient/instantclient*
+.DS_Store

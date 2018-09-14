@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -e
+
+MAINTAINER=supermamon
+NODE_VERSION=$1
+BUILD_TAG=$2
+shift && shift
+OTHER_TAGS=$@
+
+echo "[*] cleaning up"
+for tag in $BUILD_TAG $OTHER_TAGS; do
+    echo "[*] remove $MAINTAINER/oracle-node:$tag"
+    docker rmi $MAINTAINER/oracle-node:$tag
+done
