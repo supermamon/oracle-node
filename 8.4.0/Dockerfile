@@ -1,4 +1,4 @@
-FROM node:8.3.0
+FROM node:8.4.0
 
 #INSTALL LIBAIO1 & UNZIP (NEEDED FOR STRONG-ORACLE)
 RUN apt-get update && apt-get install -y \
