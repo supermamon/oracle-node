@@ -1,0 +1,24 @@
+#!/bin/bash
+
+set -e
+
+MAINTAINER=supermamon
+NODE_VERSION=$1
+BUILD_TAG=$2
+shift && shift
+OTHER_TAGS=$@
+
+echo "[*] pull      : node:$NODE_VERSION"
+echo "[*] build     : $BUILD_TAG"
+echo "[*] tag with  : $OTHER_TAGS $BUILD_TAG"
+
+echo "[*] creating Dockerfile"
+cat Dockerfile.partial | sed "s/NODE_VERSION/$NODE_VERSION/" > Dockerfile
+
+echo "[*] building $MAINTAINER/oracle-node:$BUILD_TAG"
+docker build -t $MAINTAINER/oracle-node:$BUILD_TAG .
+
+for tag in $OTHER_TAGS; do
+    echo "[*] tagging v/oracle-node:$tag"
+    docker tag $MAINTAINER/oracle-node:$BUILD_TAG $MAINTAINER/oracle-node:$tag
+done

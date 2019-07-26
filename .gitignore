@@ -1,1 +1,3 @@
-oracle12.*
+instantclient/instantclient*
+.DS_Store
+oracle*

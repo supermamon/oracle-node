@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -e
+
+MAINTAINER=supermamon
+NODE_VERSION=$1
+BUILD_TAG=$2
+shift && shift
+OTHER_TAGS=$@
+
+echo "[*] pushing images to repository"
+for tag in $OTHER_TAGS $BUILD_TAG; do
+    echo "[*] push $MAINTAINER/oracle-node:$tag"
+    docker push $MAINTAINER/oracle-node:$tag
+done

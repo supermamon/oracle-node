@@ -1,0 +1,10 @@
+#!/bin/bash
+set -e
+
+OLDIFS=$IFS
+while IFS='' read -r line || [ -n "$line" ]; do
+    echo "[*] building line -- $line"
+    ./release-versions $line
+done <./build-list
+
+IFS=$OLDIFS
